@@ -32,6 +32,10 @@ public class ReactionActivity extends Activity {
     signalImage.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
   }
 
+  public void resetSignalColor() {
+    signalImage.setImageDrawable(getResources().getDrawable(R.drawable.circle_green));
+  }
+
   @OnClick(R.id.reaction_btn) public void onReactBtnClicked() {
     ReactionController.ONLY.onUserClickButton();
   }

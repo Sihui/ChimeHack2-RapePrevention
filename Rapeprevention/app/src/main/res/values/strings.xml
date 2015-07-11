@@ -5,4 +5,6 @@
   <string name="action_settings">Settings</string>
   <string name="title_activity_reaction">ReactionActivity</string>
     <string name="title_activity_add_contact">AddContact</string>
+  <string name="title_activity_introduction">IntroductionActivity</string>
+  <string name="title_activity_text_message">TextMessageActivity</string>
 </resources>
