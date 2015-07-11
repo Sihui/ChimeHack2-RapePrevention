@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-  public Location userLocation;
-  public String userName;
-  public List<Integer> reactionTime = new ArrayList<>();
+  public Observable<Location> userLocation;
+  public Observable<String> userName;
+  public Observable<ArrayList<Integer>> reactionTime = Observable.from(new ArrayList<Integer>());
 
   private Model() {}
   private static Model ONLY = new Model();
