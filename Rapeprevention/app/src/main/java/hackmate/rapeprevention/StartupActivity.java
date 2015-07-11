@@ -27,7 +27,7 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-    SMS.sendSMS("18329752606", "haha");
+    SMS.sendSMS("18329752606", "haha", this);
     //startActivity(new Intent(this, ReactionActivity.class));
   }
 
