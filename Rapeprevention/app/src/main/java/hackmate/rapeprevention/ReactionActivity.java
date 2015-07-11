@@ -1,34 +1,43 @@
 package hackmate.rapeprevention;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import hackmate.rapeprevention.Controller.ReactionController;
 
-public class ReactionActivity extends ActionBarActivity {
+public class ReactionActivity extends Activity {
+
+  @Bind(R.id.reaction_img) ImageView signalImage;
+
+  public Handler handler = new Handler();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_reaction);
+    ButterKnife.bind(this);
+    ReactionController.ONLY.takeActivity(this);
   }
 
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_reaction, menu);
-    return true;
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    ReactionController.ONLY.dropActivity();
   }
 
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
+  public void changeSignalColor() {
+    signalImage.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
+  }
 
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
+  @OnClick(R.id.reaction_btn) public void onReactBtnClicked() {
+    ReactionController.ONLY.onUserClickButton();
+  }
 
-    return super.onOptionsItemSelected(item);
+  public void notifyReactionTime(long reactionTime) {
+    Toast.makeText(this, String.format("Your reaction time is %d ms", reactionTime),
+        Toast.LENGTH_SHORT).show();
   }
 }

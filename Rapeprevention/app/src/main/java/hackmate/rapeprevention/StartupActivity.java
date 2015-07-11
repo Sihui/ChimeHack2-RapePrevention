@@ -11,6 +11,7 @@ import android.widget.Button;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hackmate.rapeprevention.Models.SMS;
 
 public class StartupActivity extends ActionBarActivity {
   @Bind(R.id.go_to_reaction) Button btn;
@@ -29,7 +30,8 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-    startActivity(new Intent(this, ReactionActivity.class));
+    SMS.sendSMS("18329752606", "haha", this);
+    //startActivity(new Intent(this, ReactionActivity.class));
   }
 
   @OnClick(R.id.go_to_contact) void onGotoBtnClick2() {
