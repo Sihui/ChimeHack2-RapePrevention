@@ -1,32 +1,21 @@
 package hackmate.rapeprevention;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class StartupActivity extends ActionBarActivity {
-  @Bind(R.id.go_to_reaction) Button btn;
+public class ReactionActivity extends ActionBarActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_startup);
-    ButterKnife.bind(this);
+    setContentView(R.layout.activity_reaction);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_startup, menu);
+    getMenuInflater().inflate(R.menu.menu_reaction, menu);
     return true;
-  }
-
-  @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-    startActivity(new Intent(this, ReactionActivity.class));
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
