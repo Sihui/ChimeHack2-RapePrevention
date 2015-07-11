@@ -9,6 +9,7 @@ import android.widget.Button;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hackmate.rapeprevention.Models.GPSTracker;
 import hackmate.rapeprevention.Models.SMS;
 
 public class StartupActivity extends ActionBarActivity {
@@ -27,7 +28,7 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-    SMS.sendSMS("18329752606", "haha", this);
+    SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);
     //startActivity(new Intent(this, ReactionActivity.class));
   }
 

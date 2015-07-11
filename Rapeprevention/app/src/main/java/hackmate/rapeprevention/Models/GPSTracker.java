@@ -4,12 +4,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+
+import java.util.List;
 
 public final class GPSTracker implements LocationListener {
 
@@ -32,7 +36,7 @@ public final class GPSTracker implements LocationListener {
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // 10 meters
 
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 60000; // 1 minute
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
@@ -193,7 +197,7 @@ public final class GPSTracker implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-
+        Model.getModel().userLocation.set(location);
         try {
             locationManager = (LocationManager) mContext
                     .getSystemService(Context.LOCATION_SERVICE);
@@ -267,6 +271,41 @@ public final class GPSTracker implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
+    }
+
+    private static List<Address> getAddresses(double latitude, double longitude, Context context) {
+        try {
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(context);
+            if (latitude != 0 || longitude != 0) {
+                addresses = geocoder.getFromLocation(latitude ,
+                        longitude, 1);
+                String address = addresses.get(0).getAddressLine(0);
+                String city = addresses.get(0).getAddressLine(1);
+                String country = addresses.get(0).getAddressLine(2);
+                Log.d("TAG", "address = " + address + ", city =" + city + ", country = " + country);
+                return addresses;
+            } else {
+                /*Toast.makeText(context, "latitude and longitude are null",
+                        Toast.LENGTH_LONG).show();*/
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String getAddress(Context context){
+        GPSTracker mGPS = new GPSTracker(context);
+        String address = "";
+        List<Address> addresses = getAddresses(mGPS.getLatitude(), mGPS.getLongitude(), context);
+            if (addresses.size() > 0){
+                Address addr = addresses.get(0);
+                address += addr.getAddressLine(0) + addr.getAddressLine(1) + addr.getAddressLine(2);
+            }
+        return address;
     }
 
 }
