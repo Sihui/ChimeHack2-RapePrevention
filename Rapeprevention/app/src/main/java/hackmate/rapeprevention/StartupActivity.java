@@ -3,15 +3,18 @@ package hackmate.rapeprevention;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class StartupActivity extends ActionBarActivity {
   @Bind(R.id.go_to_reaction) Button btn;
+  @Bind(R.id.go_to_contact) Button btn2;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,6 +30,11 @@ public class StartupActivity extends ActionBarActivity {
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
     startActivity(new Intent(this, ReactionActivity.class));
+  }
+
+  @OnClick(R.id.go_to_contact) void onGotoBtnClick2() {
+    Log.w("debug", "go to contact");
+    startActivity(new Intent(this, AddContactActivity.class));
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
