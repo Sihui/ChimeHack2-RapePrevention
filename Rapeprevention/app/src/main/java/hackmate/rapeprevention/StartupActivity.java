@@ -2,11 +2,13 @@ package hackmate.rapeprevention;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,7 +33,16 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-    SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);
+      final Handler handler = new Handler();
+      final long intervalTime = 1000;
+      handler.postDelayed(new Runnable() {
+          @Override
+          public void run() {
+              System.out.println("What's up");
+              handler.postDelayed(this, intervalTime);
+          }
+      }, intervalTime);
+      SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);
     //startActivity(new Intent(this, ReactionActivity.class));
   }
 
