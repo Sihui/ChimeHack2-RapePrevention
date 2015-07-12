@@ -1,7 +1,9 @@
 package hackmate.rapeprevention;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -21,7 +23,8 @@ public class IntroActivity extends Activity {
 
     private ViewPager mViewPager;
     private MenuItem menuLockItem;
-    
+
+    final Handler HANDLER = new Handler();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,16 @@ public class IntroActivity extends Activity {
 
             // Now just add PhotoView to ViewPager and return it
             container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
+            if(position == sDrawables.length - 1){
+                HANDLER.postDelayed(new Runnable() {
+                    Intent introInten = new Intent(IntroActivity.this,
+                            AddContactActivity.class);
+                    @Override
+                    public void run() {
+                        startActivity(introInten);
+                    }
+                }, 1000);
+            }
             return photoView;
         }
 
