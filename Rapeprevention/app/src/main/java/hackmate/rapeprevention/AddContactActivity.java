@@ -25,12 +25,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Models.ContactInfo;
-import java.io.InputStream;
-import java.util.ArrayList;
+import hackmate.rapeprevention.Models.Model;
 
 
 public class AddContactActivity extends Activity {
@@ -214,10 +217,12 @@ public class AddContactActivity extends Activity {
                         ImageView myImageView = photos.get(photo_id);
 
                         myImageView.setImageBitmap(getCircleBitmap(photoBm));
-                        Log.w(DEBUG_TAG, "picture!");
-                        Log.w(DEBUG_TAG, Integer.toString(photo_id));
-
-                        contactsInfo.add(new ContactInfo(name, myImageView, phone));
+//                        Log.w(DEBUG_TAG, "picture!");
+//                        Log.w(DEBUG_TAG, Integer.toString(photo_id));
+//
+//                        Log.w(DEBUG_TAG, name);
+//                        Log.w(DEBUG_TAG, phone);
+                        Model.getModel().contactInfos.add(new ContactInfo(name, myImageView, phone));
 
                     } catch (Exception e) {
                         Log.e(DEBUG_TAG, "Failed to get phone data", e);
@@ -266,9 +271,6 @@ public class AddContactActivity extends Activity {
         return output;
     }
 
-    private ArrayList<ContactInfo> getContactsInfo() {
-        return contactsInfo;
-    }
 
 
 }

@@ -8,31 +8,31 @@
 
 
     <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo1"
         android:layout_above="@+id/invite_name1"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-100dp"
         />
     <TextView
         android:id="@+id/invite_name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:paddingBottom="300dp"
-        android:text="name1"/>
+        android:paddingBottom="320dp"
+        android:text=""
+        android:textColor="@color/white"/>
 
     <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo2"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
+
         android:layout_below="@+id/invite_name2"
-    android:paddingTop="10dp"
-        />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/invite_name2"
@@ -40,83 +40,104 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:paddingTop="300dp"
-        android:text="name2"/>
+        android:paddingBottom="5dp"
+        android:text=""
+        android:textColor="@color/white"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/add_contact"
-        android:layout_alignParentRight="true"
         android:id="@+id/invite_photo3"
-        android:layout_below="@+id/invite_name3"
-        />
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/invite_name4"
+        android:layout_alignEnd="@+id/invite_name4" />
 
     <TextView
         android:id="@+id/invite_name3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name3"
+        android:text=""
+        android:paddingTop="120dp"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:layout_marginRight="10dp"
-        android:paddingTop="80dp"/>
+        android:layout_marginRight="20dp"
+       />
 
     <TextView
         android:id="@+id/invite_name4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name4"
+        android:text=""
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:layout_marginRight="10dp"
-        android:paddingBottom="80dp"/>
+        android:layout_marginRight="25dp"
+        android:paddingBottom="130dp"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/add_contact"
-        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
         android:id="@+id/invite_photo4"
-        android:layout_above="@+id/invite_name3"
-        />
+        android:layout_alignBottom="@+id/invite_name6"
+        android:layout_alignStart="@+id/invite_photo3" />
 
     <TextView
         android:id="@+id/invite_name5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name5"
+        android:text=""
+        android:textColor="@color/white"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp"
-        android:paddingTop="80dp"/>
+        android:layout_marginLeft="15dp"
+        android:paddingTop="120dp"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo5"
-        android:layout_below="@+id/invite_name5"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/invite_name4"
+        android:layout_alignStart="@+id/invite_name5" />
 
     <TextView
         android:id="@+id/invite_name6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name6"
+        android:text=""
         android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:paddingBottom="80dp"
-    />
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/invite_name4" />
 
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo6"
-        android:layout_above="@+id/invite_name6"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/invite_name6"
+        android:layout_alignStart="@+id/invite_name5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_contact"
+        android:id="@+id/textView"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_above="@+id/invite_name1"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"/>
 
     <!--<ImageButton-->
         <!--android:layout_width="wrap_content"-->
