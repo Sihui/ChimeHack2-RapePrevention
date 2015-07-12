@@ -38,5 +38,9 @@
             android:name=".TextMessageActivity"
             android:label="@string/title_activity_text_message" >
         </activity>
+        <activity
+            android:name=".TimerActivity"
+            android:label="@string/title_activity_timer" >
+        </activity>
     </application>
 </manifest>

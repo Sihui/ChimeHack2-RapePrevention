@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Observable<T> {
-  interface Listener<T> {
+  public interface Listener<T> {
     void notifyChange(T obj);
   }
 
