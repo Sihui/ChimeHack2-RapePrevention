@@ -7,7 +7,7 @@ public class Model {
   public Observable<Location> userLocation = new Observable<>();
   public Observable<String> userName = new Observable<>();
   public Observable<ArrayList<Long>> reactionTime = Observable.from(new ArrayList<Long>());
-
+  public ArrayList<ContactInfo> contactInfos = new ArrayList<>();
   private Model() {}
   private static Model ONLY = new Model();
   public static Model getModel() {
