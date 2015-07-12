@@ -74,6 +74,8 @@ public class ReactionController extends Controller<ReactionActivity> {
     getActivity().notifyReactionTime(timeDiff);
     if (training) {
       Model.getModel().reactionTime.get().add(timeDiff);
+    } else {
+
     }
   }
 
