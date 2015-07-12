@@ -37,8 +37,8 @@ public class StartupActivity extends Activity{
 
   @OnClick(R.id.next) void onNextClicked() {
     DrunkAction.drunkAction();
-    /*if (!username.getText().toString().isEmpty()) {
+    if (!username.getText().toString().isEmpty()) {
       controller.onUserNameEntered(username.getText().toString());
-    }*/
+    }
   }
 }
