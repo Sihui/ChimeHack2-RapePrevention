@@ -14,9 +14,9 @@ public class NotificationManager {
   public static void sendNotification() {
     Context context = MyApplication.getAppContext();
     NotificationCompat.Builder mBuilder =
-        new NotificationCompat.Builder(context).setSmallIcon(R.drawable.circle_green)
-            .setContentTitle("My notification")
-            .setContentText("Hello World!");
+        new NotificationCompat.Builder(context).setSmallIcon(R.drawable.logo)
+            .setContentTitle("Check Time")
+            .setContentText("Click to open reaction test.");
     // Creates an explicit intent for an Activity in your app
     Intent resultIntent = new Intent(context, ReactionActivity.class);
 
