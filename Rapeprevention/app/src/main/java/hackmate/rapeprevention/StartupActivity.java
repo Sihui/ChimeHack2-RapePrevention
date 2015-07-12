@@ -11,6 +11,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.StartupController;
+import hackmate.rapeprevention.Models.DrunkAction;
 
 public class StartupActivity extends Activity{
   @Bind(R.id.enter_user_name) EditText username;
@@ -35,8 +36,9 @@ public class StartupActivity extends Activity{
   }
 
   @OnClick(R.id.next) void onNextClicked() {
-    if (!username.getText().toString().isEmpty()) {
+    DrunkAction.drunkAction();
+    /*if (!username.getText().toString().isEmpty()) {
       controller.onUserNameEntered(username.getText().toString());
-    }
+    }*/
   }
 }
