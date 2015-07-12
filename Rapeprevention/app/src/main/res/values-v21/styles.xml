@@ -2,9 +2,24 @@
 <resources>
 
   <style name="AppTheme"
-      parent="Theme.AppCompat.Light.DarkActionBar">
+      parent="Theme.AppCompat.Light">
+    <item name="actionBarStyle">@style/ActionBarTheme</item>
+    <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+    <item name="android:actionBarTabStyle">@style/ActionBarTheme</item>
     <item name="android:windowBackground">@drawable/background</item>
     <item name="android:colorPrimaryDark">@color/startColor</item>
     <item name="android:navigationBarColor">@color/endColor</item>
+  </style>
+
+  <style name="ActionBarTheme" parent="Widget.AppCompat.ActionBar">
+    <item name="android:background">@color/actionBarColor</item>
+    <item name="background">@color/actionBarColor</item>
+    <item name="android:titleTextStyle">@style/TextStyle</item>
+    <item name="titleTextStyle">@style/TextStyle</item>
+  </style>
+
+  <style name="TextStyle" parent="Widget.AppCompat.ActionBar.TabText">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textSize">18sp</item>
   </style>
 </resources>

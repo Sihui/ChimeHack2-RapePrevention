@@ -6,4 +6,6 @@
   <color name="buttonBackground">#40ffffff</color>
   <color name="buttonBackgroundPressed">#20ffffff</color>
   <color name="white">#FFFFFF</color>
+  <color name="actionBarColor">#00ACC1</color>
+  <color name="actionBarTextColor">#FFFFFF</color>
 </resources>

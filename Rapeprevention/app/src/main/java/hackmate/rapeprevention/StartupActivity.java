@@ -3,12 +3,10 @@ package hackmate.rapeprevention;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -40,7 +38,8 @@ public class StartupActivity extends Activity{
   @OnClick(R.id.next) void onNextClicked() {
     //DrunkAction.drunkAction();
     if (!username.getText().toString().isEmpty()) {
-      controller.onUserNameEntered(username.getText().toString());
+      // controller.onUserNameEntered(username.getText().toString());
     }
+
   }
 }

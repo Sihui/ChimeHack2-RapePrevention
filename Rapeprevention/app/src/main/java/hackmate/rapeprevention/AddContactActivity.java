@@ -1,6 +1,5 @@
 package hackmate.rapeprevention;
 
-import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
@@ -19,25 +18,23 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Models.ContactInfo;
 import hackmate.rapeprevention.Models.Model;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 
-public class AddContactActivity extends Activity {
+public class AddContactActivity extends ActionBarActivity{
 
     @Bind(R.id.invite_photo1) ImageView addContact1;
     @Bind(R.id.invite_photo2) ImageView addContact2;
@@ -101,21 +98,6 @@ public class AddContactActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_contact, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @OnClick(R.id.invite_photo1) void onGotoBtnClick1() {
@@ -240,8 +222,8 @@ public class AddContactActivity extends Activity {
 
                         TextView nameEntry = names.get(photo_id);
                         Log.w(DEBUG_TAG, phone);
-                        nameEntry.setText(name);
-                        nameEntry.setTypeface(tf);
+//                        nameEntry.setText(name);
+//                        nameEntry.setTypeface(tf);
                         if (phone.length() == 0) {
                             Toast.makeText(this, "No phone number found for contact.",
                                     Toast.LENGTH_LONG).show();

@@ -13,13 +13,14 @@ import hackmate.rapeprevention.Models.Observable;
 public class NestTimePicker extends View {
   float minRadius = 0.8f;
   float maxRadius = 1.0f;
-  float ignoreAngel = 15f;
+  float ignoreAngel = 30f;
   float centerX;
   float centerY;
   int maxSelector = 120;
   int unSelectedColor;
   int selectedColor;
   int barColor;
+  int backgroundColor;
   boolean touchEventCaptured = false;
   Paint paint;
 
@@ -27,7 +28,8 @@ public class NestTimePicker extends View {
 
   public NestTimePicker(Context context, AttributeSet attrs) {
     super(context, attrs);
-    int color = 0x00;
+    int color = 0xFF;
+    backgroundColor = Color.argb(64, color, color, color);
     unSelectedColor = Color.argb(100, color, color, color);
     selectedColor = Color.argb(172, color, color, color);
     barColor = Color.argb(255, color, color, color);
@@ -39,7 +41,9 @@ public class NestTimePicker extends View {
     super.onDraw(canvas);
     centerX = 1.0f * getWidth() / 2;
     centerY = 1.0f * getHeight() / 2;
-    float radius = centerX;
+    paint.setColor(backgroundColor);
+    canvas.drawCircle(centerX, centerY, centerX, paint);
+    float radius = centerX * 0.9f;
     float[] angels = new float[maxSelector];
     for (int i = 0; i != maxSelector; ++i) {
       angels[i] =
@@ -67,10 +71,11 @@ public class NestTimePicker extends View {
     drawLineOnRing(canvas, minRadius, maxRadius, angels[0], paint);
     drawLineOnRing(canvas, minRadius * 0.95f, maxRadius, angels[selected], paint);
 
-    paint.setTextSize(50);
+    paint.setTextSize(160);
     paint.setTextAlign(Paint.Align.CENTER);
-    canvas.drawText(Integer.toString(selected) + " min", centerX,
-        centerY, paint);
+    canvas.drawText(Integer.toString(selected), centerX, centerY + 60, paint);
+    paint.setTextSize(70);
+    canvas.drawText("mins", centerX, getHeight() - 35, paint);
   }
 
   void drawLineOnRing(Canvas canvas, float minRadius, float maxRadius, float angel, Paint paint) {
