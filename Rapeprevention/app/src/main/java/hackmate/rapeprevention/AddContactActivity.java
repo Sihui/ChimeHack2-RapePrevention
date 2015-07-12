@@ -13,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -54,12 +55,21 @@ public class AddContactActivity extends Activity {
     private static final int CONTACT_PICKER_RESULT = 1001;
     private static final String DEBUG_TAG = "debug";
 
+
+    Typeface tf;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.w(DEBUG_TAG, "oncreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
         ButterKnife.bind(this);
+        tf = Typeface.createFromAsset(getApplicationContext().getAssets(),
+                "fonts/DIN.ttf");
+
+        TextView add_contact = (TextView) findViewById(R.id.add_contact);
+        add_contact.setTypeface(tf);
+
 
         names.add(0,(TextView) findViewById(R.id.invite_name1));
         names.add(1,(TextView) findViewById(R.id.invite_name2));
@@ -231,6 +241,7 @@ public class AddContactActivity extends Activity {
                         TextView nameEntry = names.get(photo_id);
                         Log.w(DEBUG_TAG, phone);
                         nameEntry.setText(name);
+                        nameEntry.setTypeface(tf);
                         if (phone.length() == 0) {
                             Toast.makeText(this, "No phone number found for contact.",
                                     Toast.LENGTH_LONG).show();

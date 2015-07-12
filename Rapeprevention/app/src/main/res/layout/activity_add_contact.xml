@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_contact"
-        android:id="@+id/textView"
+        android:id="@+id/add_contact"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:layout_above="@+id/invite_name1"
