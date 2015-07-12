@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import hackmate.rapeprevention.Models.Observable;
 
 public class NestTimePicker extends View {
   float minRadius = 0.8f;
@@ -16,12 +17,13 @@ public class NestTimePicker extends View {
   float centerX;
   float centerY;
   int maxSelector = 120;
-  int selected = 60;
   int unSelectedColor;
   int selectedColor;
   int barColor;
   boolean touchEventCaptured = false;
   Paint paint;
+
+  public Observable<Integer> selectedMinute = Observable.from(60);
 
   public NestTimePicker(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -46,15 +48,16 @@ public class NestTimePicker extends View {
     paint.setStrokeWidth(5);
     minRadius = radius * 0.8f;
     maxRadius = radius;
+    int selected = selectedMinute.get();
 
     paint.setColor(selectedColor);
-    for (int i = 0 ; i != selected ; ++i) {
+    for (int i = 0; i != selected; ++i) {
       drawLineOnRing(canvas, minRadius, maxRadius, angels[i], paint);
     }
 
     paint.setStrokeWidth(4);
     paint.setColor(unSelectedColor);
-    for (int i = selected ; i != maxSelector; ++i) {
+    for (int i = selected; i != maxSelector; ++i) {
       drawLineOnRing(canvas, minRadius, maxRadius, angels[i], paint);
     }
 
@@ -63,6 +66,11 @@ public class NestTimePicker extends View {
 
     drawLineOnRing(canvas, minRadius, maxRadius, angels[0], paint);
     drawLineOnRing(canvas, minRadius * 0.95f, maxRadius, angels[selected], paint);
+
+    paint.setTextSize(50);
+    paint.setTextAlign(Paint.Align.CENTER);
+    canvas.drawText(Integer.toString(selected) + " min", centerX,
+        centerY, paint);
   }
 
   void drawLineOnRing(Canvas canvas, float minRadius, float maxRadius, float angel, Paint paint) {
@@ -77,7 +85,8 @@ public class NestTimePicker extends View {
     float angel = (float) Math.asin((centerX - x) / distance);
     if (x < centerX && y > centerY) {
       return angel;
-    } if (x > centerX && y > centerY) {
+    }
+    if (x > centerX && y > centerY) {
       return (float) (Math.PI * 2 + angel);
     } else {
       return (float) (Math.PI - angel);
@@ -86,7 +95,7 @@ public class NestTimePicker extends View {
 
   int getSelectFromAngel(float angel) {
     double angelDiff = 1.0 * (360 - 2 * ignoreAngel) / 360 * 2 * Math.PI / maxSelector;
-    return (int)((angel - 1.0 * ignoreAngel / 180 * Math.PI) / angelDiff);
+    return (int) ((angel - 1.0 * ignoreAngel / 180 * Math.PI) / angelDiff);
   }
 
   private float getDistance(float x, float y) {
@@ -97,10 +106,12 @@ public class NestTimePicker extends View {
     if (selected < 0 || selected >= maxSelector) {
       return;
     }
-    if (this.selected == selected) {
+
+    if (this.selectedMinute.get() == selected) {
       return;
     }
-    this.selected = selected;
+
+    this.selectedMinute.set(selected);
     invalidate();
   }
 
@@ -113,11 +124,12 @@ public class NestTimePicker extends View {
         int select = getSelectFromAngel(angel);
         if (select >= 0 && select <= maxSelector) {
           touchEventCaptured = true;
-          setSelected(select);
+          setSelected(Math.max(1, select));
           return true;
         }
       }
     }
+
     if (event.getAction() == MotionEvent.ACTION_UP) {
       touchEventCaptured = false;
       return true;
@@ -125,7 +137,7 @@ public class NestTimePicker extends View {
     if (event.getAction() == MotionEvent.ACTION_MOVE && touchEventCaptured) {
       int select = getSelectFromAngel(angel);
       Log.d("Clock", "Selected " + Integer.toString(select));
-      setSelected(select);
+      setSelected(Math.max(1, select));
       return true;
     }
     return false;

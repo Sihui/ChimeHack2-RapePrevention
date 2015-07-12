@@ -7,4 +7,5 @@
     <string name="title_activity_add_contact">AddContact</string>
   <string name="title_activity_introduction">IntroductionActivity</string>
   <string name="title_activity_text_message">TextMessageActivity</string>
+  <string name="title_activity_timer">TimerActivity</string>
 </resources>
