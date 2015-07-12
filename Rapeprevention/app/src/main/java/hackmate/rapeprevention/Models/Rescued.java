@@ -1,8 +1,8 @@
 package hackmate.rapeprevention.Models;
 
 public class Rescued {
-    public boolean rescued;
-    public Rescued(boolean rescued){
-        this.rescued = rescued;
+    public boolean pickedUp;
+    public Rescued(boolean pickedUp){
+        this.pickedUp = pickedUp;
     }
 }

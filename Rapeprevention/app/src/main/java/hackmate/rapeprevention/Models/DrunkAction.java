@@ -14,6 +14,7 @@ public class DrunkAction{
     private static String confirmText;
     private static String denyText;
     private static String discText;
+    private static boolean confirmPickedup;
     private static boolean sentToParent;
     private static int count;
     final static long intervalTime = 10000; // 5min
@@ -25,6 +26,8 @@ public class DrunkAction{
 
     public static void drunkAction() {
         sentToParent = false;
+        confirmPickedup = false;
+        count = 0;
         getLinks();
     }
 
@@ -46,7 +49,9 @@ public class DrunkAction{
                 @Override
                 public void run() {
                     pickupConfirmed();
-                    HANDLER.postDelayed(this, intervalTime);
+                    if(!confirmPickedup && !sentToParent) {
+                        HANDLER.postDelayed(this, intervalTime);
+                    }
                 }
             }, intervalTime);
         }
@@ -60,7 +65,8 @@ public class DrunkAction{
     private static Callback<Rescued> pickupConfirmedCallback = new Callback<Rescued>() {
         @Override
         public void success(Rescued rescued, Response response) {
-            if(!rescued.rescued && !sentToParent) {
+            confirmPickedup = rescued.pickedUp;
+            if(!confirmPickedup && !sentToParent) {
                 count++;
                 Context context = MyApplication.getAppContext();
                 String address = GPSTracker.getAddress(context);
