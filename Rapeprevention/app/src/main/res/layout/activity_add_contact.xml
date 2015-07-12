@@ -12,10 +12,8 @@
         android:layout_height="75dp"
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo1"
-        android:layout_above="@+id/invite_name1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-100dp"
-        />
+        android:layout_above="@+id/invite_name4"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:id="@+id/invite_name1"
         android:layout_width="wrap_content"
@@ -31,7 +29,7 @@
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo2"
 
-        android:layout_below="@+id/invite_name2"
+        android:layout_alignBottom="@+id/invite_name1"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -40,49 +38,55 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:paddingTop="300dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="140dp"
         android:text=""
         android:textColor="@color/white"/>
 
     <ImageView
+        android:id="@+id/invite_photo3"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/add_contact"
-        android:id="@+id/invite_photo3"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/invite_name4"
-        android:layout_alignEnd="@+id/invite_name4" />
+        android:layout_marginRight="0dp"
+        android:layout_alignTop="@+id/invite_name4"
+        android:layout_alignEnd="@+id/add_contact" />
 
     <TextView
         android:id="@+id/invite_name3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:paddingTop="120dp"
-        android:textColor="@color/white"
+
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
+
+
         android:layout_marginRight="20dp"
-       />
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp"
+        android:textColor="@color/white"
+        android:layout_above="@+id/invite_name4"
+        />
 
     <TextView
         android:id="@+id/invite_name4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="3242142"
         android:textColor="@color/white"
-        android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
         android:layout_marginRight="25dp"
-        android:paddingBottom="130dp"/>
+        android:paddingBottom="136dp"
+        android:layout_centerVertical="true"
+        android:layout_above="@+id/invite_photo"
+        android:layout_alignStart="@+id/invite_name3" />
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/add_contact"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="0dp"
         android:id="@+id/invite_photo4"
-        android:layout_alignBottom="@+id/invite_name6"
+        android:layout_alignTop="@+id/invite_photo5"
         android:layout_alignStart="@+id/invite_photo3" />
 
     <TextView
@@ -93,8 +97,8 @@
         android:textColor="@color/white"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="15dp"
-        android:paddingTop="120dp"/>
+        android:layout_marginLeft="30dp"
+        android:paddingTop="22dp"/>
 
     <ImageView
         android:layout_width="70dp"
@@ -102,20 +106,20 @@
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo5"
         android:layout_marginLeft="10dp"
-        android:layout_below="@+id/invite_name4"
-        android:layout_alignStart="@+id/invite_name5" />
+        android:layout_below="@+id/invite_name5"
+        android:layout_alignStart="@+id/invite_name6" />
 
     <TextView
         android:id="@+id/invite_name6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
-        android:paddingBottom="80dp"
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp"
         android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/invite_name4" />
+        android:layout_above="@+id/invite_name4"
+        android:layout_alignEnd="@+id/invite_name5" />
 
 
     <ImageView
@@ -124,8 +128,8 @@
         android:src="@drawable/add_contact"
         android:id="@+id/invite_photo6"
         android:layout_marginLeft="10dp"
-        android:layout_alignBottom="@+id/invite_name6"
-        android:layout_alignStart="@+id/invite_name5" />
+        android:layout_below="@+id/invite_name6"
+        android:layout_alignStart="@+id/invite_name6" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -139,6 +143,15 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"/>
 
+    <Button
+        android:id="@+id/next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NEXT"
+        style="@style/ButtonTheme"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+    <!--android:style="@style/ButtonTheme"-->
     <!--<ImageButton-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->

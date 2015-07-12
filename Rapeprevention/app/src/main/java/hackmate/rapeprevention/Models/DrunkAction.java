@@ -3,6 +3,9 @@ package hackmate.rapeprevention.Models;
 import android.content.Context;
 import android.os.Handler;
 
+import java.util.ArrayList;
+
+import hackmate.rapeprevention.Controller.TextMessageController;
 import hackmate.rapeprevention.MyApplication;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -20,9 +23,8 @@ public class DrunkAction{
     final static long intervalTime = 10000; // 5min
     final static int MAX_TRIES = 3;
     final static Handler HANDLER = new Handler();
-    final static String USERNAME = "Rachel"; // get from model
-    static String[] numbers = new String[]{"14157135782"};//{"18329752606", "17022907075", "18329146226"}; // set by user, get from model
-    final static String PARENT_NUMBER = "14157135782";
+    final static String USERNAME = Model.getModel().userName.get();
+    static ArrayList<ContactInfo> numbers = Model.getModel().contactInfos; // new String[]{"14157135782"};//{"18329752606", "17022907075", "18329146226"}; // set by user, get from model
 
     public static void drunkAction() {
         sentToParent = false;
@@ -70,9 +72,11 @@ public class DrunkAction{
                 count++;
                 Context context = MyApplication.getAppContext();
                 String address = GPSTracker.getAddress(context);
-                addrText = USERNAME + " is drunk, please pick her up @" + address;
                 if(count < 4){
-                    for (String number : numbers) {
+                    for (int i = 0; i < numbers.size() - 1; i++) {
+                        ContactInfo cInfo = numbers.get(i);
+                        String number = cInfo.number;
+                        addrText = "Hi " + cInfo.getName() + USERNAME + " is drunk, please pick her up @" + address;
                         System.out.println("Sending text to a friend " + addrText + confirmText + denyText + discText);
                         SMS.sendSMS(number, addrText, context);
                         SMS.sendSMS(number, confirmText, context);
@@ -82,9 +86,11 @@ public class DrunkAction{
                 } else {
                     String text = USERNAME + " is drunk, please pick her up @" + address;
                     System.out.println("Sending text to a parent " + text);
-                    SMS.sendSMS(PARENT_NUMBER, text, context);
+                    SMS.sendSMS(numbers.get(numbers.size() - 1).number, text, context);
                     sentToParent = true;
                 }
+            }else{
+                TextMessageController.get().confirmPickup();
             }
         }
 
