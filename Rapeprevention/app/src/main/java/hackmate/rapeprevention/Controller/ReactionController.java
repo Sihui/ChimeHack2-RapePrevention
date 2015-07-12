@@ -42,7 +42,7 @@ public class ReactionController extends Controller<ReactionActivity> {
     // Train 5 times
     final int interval = 5000;
     getActivity().handler.postDelayed(new Runnable() {
-      int times = 5;
+      int times = 4;
 
       @Override public void run() {
         getActivity().setTitle(
@@ -92,6 +92,8 @@ public class ReactionController extends Controller<ReactionActivity> {
       derivation = Math.sqrt(1.0 / (reactionTimes.size() - 1) * derivation);
       if (Math.abs(mean - timeDiff) > 3 * derivation) {
         detectDrunk();
+      } else {
+        getActivity().finish();
       }
     }
   }

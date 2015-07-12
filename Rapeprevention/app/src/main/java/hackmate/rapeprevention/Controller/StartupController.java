@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import hackmate.rapeprevention.AddContactActivity;
 import hackmate.rapeprevention.IntroActivity;
+import hackmate.rapeprevention.Models.Model;
 import hackmate.rapeprevention.StartupActivity;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class StartupController extends Controller<StartupActivity> {
 
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
     Set<String> loggedUserName = prefs.getStringSet(USERNAME, new HashSet<String>());
+    Model.getModel().userName.set(name);
     if (loggedUserName.contains(name)) {
       Log.d("StartUP", "Received old user name: " + name);
       startActivity(AddContactActivity.class);

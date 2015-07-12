@@ -55,7 +55,7 @@ public class DrunkAction{
                         HANDLER.postDelayed(this, intervalTime);
                     }
                 }
-            }, intervalTime);
+            }, 0);
         }
 
         @Override

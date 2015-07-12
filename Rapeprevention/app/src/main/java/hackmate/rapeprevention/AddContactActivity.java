@@ -82,6 +82,8 @@ public class AddContactActivity extends ActionBarActivity{
         photos.add(4,(ImageView)findViewById(R.id.invite_photo5));
         photos.add(5,(ImageView)findViewById(R.id.invite_photo6));
 
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setTitle("FRIENDMATE");
     }
 
     ImageView.OnClickListener add_contact = new ImageView.OnClickListener() {
