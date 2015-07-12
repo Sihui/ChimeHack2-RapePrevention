@@ -1,30 +1,20 @@
 package hackmate.rapeprevention;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.StartupController;
-import hackmate.rapeprevention.Models.DrunkAction;
-import hackmate.rapeprevention.Models.GPSTracker;
-import hackmate.rapeprevention.Models.SMS;
 
 public class StartupActivity extends ActionBarActivity {
   @Bind(R.id.go_to_reaction) Button btn;
@@ -39,15 +29,14 @@ public class StartupActivity extends ActionBarActivity {
 
     controller.takeActivity(this);
     username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (actionId == EditorInfo.IME_ACTION_DONE ||
-                    (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                controller.onUserNameEntered(username.getText().toString());
-                return true;
-            }
-            return false;
+      @Override public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE || (event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+            && event.getAction() == KeyEvent.ACTION_DOWN)) {
+          controller.onUserNameEntered(username.getText().toString());
+          return true;
         }
+        return false;
+      }
     });
   }
 
@@ -58,8 +47,9 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-      DrunkAction.drunkAction();
-    //startActivity(new Intent(this, ReactionActivity.class));
+    Intent intent = new Intent(this, ReactionActivity.class);
+    intent.putExtra("training", true);
+    startActivity(intent);
   }
 
   @OnClick(R.id.go_to_contact) void onGotoBtnClick2() {
@@ -80,5 +70,4 @@ public class StartupActivity extends ActionBarActivity {
 
     return super.onOptionsItemSelected(item);
   }
-
 }

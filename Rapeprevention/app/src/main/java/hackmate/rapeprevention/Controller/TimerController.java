@@ -1,5 +1,6 @@
 package hackmate.rapeprevention.Controller;
 
+import hackmate.rapeprevention.Models.NotificationManager;
 import hackmate.rapeprevention.TimerActivity;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,7 +28,7 @@ public class TimerController extends Controller<TimerActivity> {
   public void setTime(int time) {
     timeToTestReaction = time;
     if (timeToTestReaction <= 0) {
-      // TODO: Create notification here
+      NotificationManager.sendNotification();
     }
   }
 

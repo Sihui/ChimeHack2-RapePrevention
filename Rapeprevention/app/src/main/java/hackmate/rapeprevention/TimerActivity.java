@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import hackmate.rapeprevention.Controller.TimerController;
+import hackmate.rapeprevention.Models.NotificationManager;
 import hackmate.rapeprevention.Models.Observable;
 import hackmate.rapeprevention.Widgets.NestTimePicker;
 
@@ -26,5 +27,10 @@ public class TimerActivity extends ActionBarActivity {
         controller.setTime(obj);
       }
     });
+  }
+
+  @Override protected void onStop() {
+    super.onStop();
+    NotificationManager.sendNotification();
   }
 }
