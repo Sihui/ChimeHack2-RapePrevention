@@ -56,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:visibility="gone"
 
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
@@ -72,12 +73,12 @@
         android:id="@+id/invite_name4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3242142"
+        android:text=""
+
         android:textColor="@color/white"
         android:layout_marginRight="25dp"
         android:paddingBottom="136dp"
         android:layout_centerVertical="true"
-        android:layout_above="@+id/invite_photo"
         android:layout_alignStart="@+id/invite_name3" />
 
     <ImageView

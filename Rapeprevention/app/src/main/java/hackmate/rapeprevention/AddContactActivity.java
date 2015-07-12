@@ -240,8 +240,8 @@ public class AddContactActivity extends Activity {
 
                         TextView nameEntry = names.get(photo_id);
                         Log.w(DEBUG_TAG, phone);
-                        nameEntry.setText(name);
-                        nameEntry.setTypeface(tf);
+//                        nameEntry.setText(name);
+//                        nameEntry.setTypeface(tf);
                         if (phone.length() == 0) {
                             Toast.makeText(this, "No phone number found for contact.",
                                     Toast.LENGTH_LONG).show();
