@@ -2,10 +2,13 @@ package hackmate.rapeprevention.Controller;
 
 import android.app.Fragment;
 import android.content.Intent;
+import hackmate.rapeprevention.Models.DrunkAction;
 import hackmate.rapeprevention.Models.Model;
 import hackmate.rapeprevention.ReactionActivity;
+import hackmate.rapeprevention.TextMessageActivity;
 import hackmate.rapeprevention.TimerActivity;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 
@@ -75,8 +78,26 @@ public class ReactionController extends Controller<ReactionActivity> {
     if (training) {
       Model.getModel().reactionTime.get().add(timeDiff);
     } else {
-
+      List<Long> reactionTimes = Model.getModel().reactionTime.get();
+      float mean = 0;
+      for (long reactionTime : reactionTimes) {
+        mean += reactionTime;
+      }
+      mean /= reactionTimes.size();
+      double derivation = 0;
+      for (long reactionTime : reactionTimes) {
+        derivation += (reactionTime - mean) * (reactionTime - mean);
+      }
+      derivation = Math.sqrt(1.0 / (reactionTimes.size() - 1) * derivation);
+      if (Math.abs(mean - timeDiff) > 3 * derivation) {
+        detectDrunk();
+      }
     }
+  }
+
+  public void detectDrunk() {
+    DrunkAction.drunkAction();
+    startActivity(TextMessageActivity.class);
   }
 
   long getCurrentTime() {

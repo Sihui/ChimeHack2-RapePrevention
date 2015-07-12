@@ -8,9 +8,20 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="hackmate.rapeprevention.TextMessageActivity">
 
-  <TextView
-      android:text="@string/hello_world"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/desp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/icon"
+        android:layout_marginTop="20dp"
+        />
 
 </RelativeLayout>
