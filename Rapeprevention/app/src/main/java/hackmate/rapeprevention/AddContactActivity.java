@@ -60,19 +60,19 @@ public class AddContactActivity extends ActionBarActivity {
         setContentView(R.layout.activity_add_contact);
         ButterKnife.bind(this);
 
-        names.add((TextView) findViewById(R.id.invite_name1));
-        names.add((TextView) findViewById(R.id.invite_name2));
-        names.add((TextView) findViewById(R.id.invite_name3));
-        names.add((TextView) findViewById(R.id.invite_name4));
-        names.add((TextView) findViewById(R.id.invite_name5));
-        names.add((TextView) findViewById(R.id.invite_name6));
+        names.add(0,(TextView) findViewById(R.id.invite_name1));
+        names.add(1,(TextView) findViewById(R.id.invite_name2));
+        names.add(2,(TextView) findViewById(R.id.invite_name3));
+        names.add(3,(TextView) findViewById(R.id.invite_name4));
+        names.add(4,(TextView) findViewById(R.id.invite_name5));
+        names.add(5,(TextView) findViewById(R.id.invite_name6));
 
-        photos.add((ImageView) findViewById(R.id.invite_photo1));
-        photos.add((ImageView) findViewById(R.id.invite_photo2));
-        photos.add((ImageView) findViewById(R.id.invite_photo3));
-        photos.add((ImageView) findViewById(R.id.invite_photo4));
-        photos.add((ImageView) findViewById(R.id.invite_photo5));
-        photos.add((ImageView) findViewById(R.id.invite_photo6));
+        photos.add(0,(ImageView)findViewById(R.id.invite_photo1));
+        photos.add(1,(ImageView)findViewById(R.id.invite_photo2));
+        photos.add(2,(ImageView)findViewById(R.id.invite_photo3));
+        photos.add(3,(ImageView)findViewById(R.id.invite_photo4));
+        photos.add(4,(ImageView)findViewById(R.id.invite_photo5));
+        photos.add(5,(ImageView)findViewById(R.id.invite_photo6));
 
     }
 
@@ -108,51 +108,57 @@ public class AddContactActivity extends ActionBarActivity {
     }
 
     @OnClick(R.id.invite_photo1) void onGotoBtnClick1() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked1");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
         photo_id = 0;
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
     @OnClick(R.id.invite_photo2) void onGotoBtnClick2() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked2");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
         photo_id = 1;
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
     @OnClick(R.id.invite_photo3) void onGotoBtnClick3() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked3");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
         photo_id = 2;
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
     @OnClick(R.id.invite_photo4) void onGotoBtnClick4() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked4");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
+
         photo_id = 3;
-        contactPickerIntent.putExtra("photo_id", 4);
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
     @OnClick(R.id.invite_photo5) void onGotoBtnClick5() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked5");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
         photo_id = 4;
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
     @OnClick(R.id.invite_photo6) void onGotoBtnClick6() {
-        Log.w(DEBUG_TAG, "clicked");
+        Log.w(DEBUG_TAG, "clicked6");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                 Contacts.CONTENT_URI);
         photo_id = 5;
+        Log.w(DEBUG_TAG, Integer.toString(photo_id));
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
     }
 
@@ -207,10 +213,11 @@ public class AddContactActivity extends ActionBarActivity {
                         InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), photoUri);
 
                         photoBm = BitmapFactory.decodeStream(input);
-                        ImageView myImageView = photos.get(photo_id-1);
+                        ImageView myImageView = photos.get(photo_id);
 
                         myImageView.setImageBitmap(getCircleBitmap(photoBm));
                         Log.w(DEBUG_TAG, "picture!");
+                        Log.w(DEBUG_TAG, Integer.toString(photo_id));
 
                         contactsInfo.add(new ContactInfo(name, myImageView, phone));
 
@@ -218,14 +225,14 @@ public class AddContactActivity extends ActionBarActivity {
                         Log.e(DEBUG_TAG, "Failed to get phone data", e);
                     } finally {
 
-                        TextView nameEntry = names.get(photo_id-1);
+                        TextView nameEntry = names.get(photo_id);
                         Log.w(DEBUG_TAG, phone);
                         nameEntry.setText(name);
                         if (phone.length() == 0) {
                             Toast.makeText(this, "No phone number found for contact.",
                                     Toast.LENGTH_LONG).show();
                         }
-
+                        photo_id = -1;
 
                     }
 
@@ -239,13 +246,13 @@ public class AddContactActivity extends ActionBarActivity {
 
 
     private Bitmap getCircleBitmap(Bitmap bitmap) {
-        final Bitmap output = Bitmap.createBitmap(bitmap.getWidth()*2,
-                bitmap.getHeight()*2, Bitmap.Config.ARGB_8888);
+        final Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         final Canvas canvas = new Canvas(output);
 
         final int color = Color.RED;
         final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth()*2, bitmap.getHeight()*2);
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
         final RectF rectF = new RectF(rect);
 
         paint.setAntiAlias(true);

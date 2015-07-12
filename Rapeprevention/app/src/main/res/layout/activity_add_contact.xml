@@ -8,9 +8,9 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/add_contact"
         android:id="@+id/invite_photo1"
         android:layout_above="@+id/invite_name1"
         android:layout_centerHorizontal="true"
@@ -24,13 +24,14 @@
         android:text="name1"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/add_contact"
         android:id="@+id/invite_photo2"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        android:paddingTop="400dp"
+        android:layout_below="@+id/invite_name2"
+    android:paddingTop="10dp"
         />
 
     <TextView
@@ -42,14 +43,12 @@
         android:text="name2"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_contact"
+        android:layout_alignParentRight="true"
         android:id="@+id/invite_photo3"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="210dp"
-        android:paddingLeft="280dp"
+        android:layout_below="@+id/invite_name3"
         />
 
     <TextView
@@ -57,28 +56,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name3"
+        android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:paddingTop="120dp"
-        android:paddingLeft="280dp"/>
+        android:layout_marginRight="10dp"
+        android:paddingTop="80dp"/>
 
     <TextView
         android:id="@+id/invite_name4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name4"
+        android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:paddingBottom="80dp"
-        android:paddingLeft="280dp"/>
+        android:layout_marginRight="10dp"
+        android:paddingBottom="80dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_contact"
+        android:layout_alignParentRight="true"
         android:id="@+id/invite_photo4"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="170dp"
-        android:paddingLeft="280dp"
+        android:layout_above="@+id/invite_name3"
         />
 
     <TextView
@@ -86,19 +85,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name5"
+        android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:paddingTop="120dp"
-        android:paddingRight="280dp"/>
+        android:layout_marginLeft="10dp"
+        android:paddingTop="80dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_contact"
         android:id="@+id/invite_photo5"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="210dp"
-        android:paddingRight="280dp"
+        android:layout_below="@+id/invite_name5"
         />
 
     <TextView
@@ -106,19 +103,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name6"
+        android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
         android:paddingBottom="80dp"
-        android:paddingRight="280dp"/>
+    />
+
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_green"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_contact"
         android:id="@+id/invite_photo6"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="170dp"
-        android:paddingRight="280dp"
+        android:layout_above="@+id/invite_name6"
         />
 
     <!--<ImageButton-->
