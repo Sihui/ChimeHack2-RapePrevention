@@ -7,22 +7,14 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TimePicker;
 import android.widget.Toast;
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.ReactionController;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 
 public class ReactionActivity extends Activity {
 
-  @Bind(R.id.reaction_img) ImageView signalImage;
-  @Bind(R.id.countdown_timer) ImageView coundownTimer;
-  //@Bind(R.id.countdown_timer) TimePicker coundownTimer;
   public Handler handler = new Handler();
   boolean mShowingBack = false;
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +40,9 @@ public class ReactionActivity extends Activity {
   }
 
   public void changeSignalColor() {
-    signalImage.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
   }
 
   public void resetSignalColor() {
-    signalImage.setImageDrawable(getResources().getDrawable(R.drawable.circle_green));
   }
 
   @OnClick(R.id.reaction_btn) public void onReactBtnClicked() {

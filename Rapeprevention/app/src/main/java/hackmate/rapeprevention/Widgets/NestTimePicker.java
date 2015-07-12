@@ -25,9 +25,10 @@ public class NestTimePicker extends View {
 
   public NestTimePicker(Context context, AttributeSet attrs) {
     super(context, attrs);
-    unSelectedColor = Color.argb(100, 0xFF, 0xFF, 0xFF);
-    selectedColor = Color.argb(172, 0xFF, 0xFF, 0xFF);
-    barColor = Color.argb(255, 0xFF, 0xFF, 0xFF);
+    int color = 0x00;
+    unSelectedColor = Color.argb(100, color, color, color);
+    selectedColor = Color.argb(172, color, color, color);
+    barColor = Color.argb(255, color, color, color);
     paint = new Paint();
     paint.setFlags(Paint.ANTI_ALIAS_FLAG);
   }
