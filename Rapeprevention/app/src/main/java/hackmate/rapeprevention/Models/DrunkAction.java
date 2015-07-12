@@ -3,9 +3,6 @@ package hackmate.rapeprevention.Models;
 import android.content.Context;
 import android.os.Handler;
 
-import java.util.*;
-import java.util.Observable;
-
 import hackmate.rapeprevention.MyApplication;
 import retrofit.Callback;
 import retrofit.RetrofitError;
