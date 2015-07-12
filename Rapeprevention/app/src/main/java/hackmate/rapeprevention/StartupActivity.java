@@ -51,7 +51,7 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-      final Handler handler = new Handler();
+      /*final Handler handler = new Handler();
       final long intervalTime = 1000;
       handler.postDelayed(new Runnable() {
           @Override
@@ -60,8 +60,8 @@ public class StartupActivity extends ActionBarActivity {
               handler.postDelayed(this, intervalTime);
           }
       }, intervalTime);
-      SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);
-    //startActivity(new Intent(this, ReactionActivity.class));
+      SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);*/
+    startActivity(new Intent(this, ReactionActivity.class));
   }
 
   @OnClick(R.id.go_to_contact) void onGotoBtnClick2() {
