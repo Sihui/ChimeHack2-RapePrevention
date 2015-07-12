@@ -1,5 +1,6 @@
 package hackmate.rapeprevention;
 
+import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,7 +18,6 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,17 +25,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Models.ContactInfo;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 
-public class AddContactActivity extends ActionBarActivity {
+public class AddContactActivity extends Activity {
 
     @Bind(R.id.invite_photo1) ImageView addContact1;
     @Bind(R.id.invite_photo2) ImageView addContact2;
