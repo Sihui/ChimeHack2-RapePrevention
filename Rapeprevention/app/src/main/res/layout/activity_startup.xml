@@ -23,4 +23,12 @@
         android:layout_below="@+id/go_to_reaction"
         android:layout_alignEnd="@+id/go_to_reaction" />
 
+    <EditText
+        android:id="@+id/enter_user_name"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:hint="What's your name?"
+        />
+
 </RelativeLayout>
