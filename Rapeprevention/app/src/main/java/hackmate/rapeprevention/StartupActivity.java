@@ -22,6 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.StartupController;
+import hackmate.rapeprevention.Models.DrunkAction;
 import hackmate.rapeprevention.Models.GPSTracker;
 import hackmate.rapeprevention.Models.SMS;
 
@@ -38,14 +39,15 @@ public class StartupActivity extends ActionBarActivity {
 
     controller.takeActivity(this);
     username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-      @Override public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_DONE ||
-            (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-          controller.onUserNameEntered(username.getText().toString());
-          return true;
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                controller.onUserNameEntered(username.getText().toString());
+                return true;
+            }
+            return false;
         }
-        return false;
-      }
     });
   }
 
@@ -56,18 +58,8 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-      /*final Handler handler = new Handler();
-      final long intervalTime = 3000;
-      handler.postDelayed(new Runnable() {
-          @Override
-          public void run() {
-              System.out.println("What's up");
-              sendNotification();
-              handler.postDelayed(this, intervalTime);
-          }
-      }, intervalTime);*/
-      /*SMS.sendSMS("18329752606", "haha" + GPSTracker.getAddress(this), this);*/
-    startActivity(new Intent(this, ReactionActivity.class));
+      DrunkAction.drunkAction();
+    //startActivity(new Intent(this, ReactionActivity.class));
   }
 
   @OnClick(R.id.go_to_contact) void onGotoBtnClick2() {
@@ -88,33 +80,5 @@ public class StartupActivity extends ActionBarActivity {
 
     return super.onOptionsItemSelected(item);
   }
-    private void sendNotification(){
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.circle_green)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
-// Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(this, ReactionActivity.class);
 
-// The stack builder object will contain an artificial back stack for the
-// started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-// Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(ReactionActivity.class);
-// Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
-        mNotificationManager.notify(0, mBuilder.build());
-    }
 }
