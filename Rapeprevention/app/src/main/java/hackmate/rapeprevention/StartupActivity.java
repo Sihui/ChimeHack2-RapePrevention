@@ -38,10 +38,7 @@ public class StartupActivity extends Activity{
   }
 
   @OnClick(R.id.next) void onNextClicked() {
-      Intent introInten = new Intent(this,
-              IntroActivity.class);
-      startActivity(introInten);
-    DrunkAction.drunkAction();
+    //DrunkAction.drunkAction();
     if (!username.getText().toString().isEmpty()) {
       controller.onUserNameEntered(username.getText().toString());
     }
