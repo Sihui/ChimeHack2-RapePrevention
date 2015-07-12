@@ -16,7 +16,7 @@ public class DrunkAction{
     private static String discText;
     private static boolean sentToParent;
     private static int count;
-    final static long intervalTime = 3000; // 5min
+    final static long intervalTime = 10000; // 5min
     final static int MAX_TRIES = 3;
     final static Handler HANDLER = new Handler();
     final static String USERNAME = "Rachel"; // get from model
