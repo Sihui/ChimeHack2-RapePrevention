@@ -100,6 +100,11 @@ public class AddContactActivity extends ActionBarActivity{
         return true;
     }
 
+    @OnClick(R.id.next) void onNextClick() {
+        Intent intent = new Intent(this, ReactionActivity.class);
+        intent.putExtra("training", true);
+        startActivity(intent);
+    }
     @OnClick(R.id.invite_photo1) void onGotoBtnClick1() {
         Log.w(DEBUG_TAG, "clicked1");
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,

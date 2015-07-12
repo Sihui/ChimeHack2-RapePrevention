@@ -26,6 +26,7 @@ public class ReactionController extends Controller<ReactionActivity> {
 
   @Override public void takeActivity(ReactionActivity activity) {
     super.takeActivity(activity);
+    activity.showNormalBtn();
   }
 
   public void onReceiveIntent(Intent intent) {
@@ -45,7 +46,7 @@ public class ReactionController extends Controller<ReactionActivity> {
 
       @Override public void run() {
         getActivity().setTitle(
-            String.format("Please click button when it turns red. Remaining %d times.", times));
+            String.format("Press the button when color flashes. Remaining %d times.", times - 1));
         times--;
         startMeasureReaction();
         if (times != 0) {
@@ -54,7 +55,7 @@ public class ReactionController extends Controller<ReactionActivity> {
           startActivity(TimerActivity.class);
         }
       }
-    }, interval);
+    }, 0);
   }
 
   public void startMeasureReaction() {

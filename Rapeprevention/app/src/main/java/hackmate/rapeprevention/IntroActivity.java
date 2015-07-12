@@ -7,81 +7,72 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import hackmate.rapeprevention.Models.HackyViewPager;
 import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
-
 
 public class IntroActivity extends Activity {
-    private static final String ISLOCKED_ARG = "isLocked";
+  private static final String ISLOCKED_ARG = "isLocked";
 
-    private ViewPager mViewPager;
-    private MenuItem menuLockItem;
+  private ViewPager mViewPager;
+  private MenuItem menuLockItem;
 
-    final Handler HANDLER = new Handler();
+  final Handler HANDLER = new Handler();
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pager);
-        mViewPager = (HackyViewPager) findViewById(R.id.view_pager);
-        setContentView(mViewPager);
+  @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_view_pager);
+    mViewPager = (HackyViewPager) findViewById(R.id.view_pager);
+    setContentView(mViewPager);
 
-        mViewPager.setAdapter(new SamplePagerAdapter());
+    mViewPager.setAdapter(new SamplePagerAdapter());
 
-        if (savedInstanceState != null) {
-            boolean isLocked = savedInstanceState.getBoolean(ISLOCKED_ARG, false);
-            ((HackyViewPager) mViewPager).setLocked(isLocked);
-        }
+    if (savedInstanceState != null) {
+      boolean isLocked = savedInstanceState.getBoolean(ISLOCKED_ARG, false);
+      ((HackyViewPager) mViewPager).setLocked(isLocked);
+    }
+  }
+
+  class SamplePagerAdapter extends PagerAdapter {
+
+    private final int[] sDrawables = {
+        R.drawable.intro1, R.drawable.intro2, R.drawable.intro3, R.drawable.intro4,
+        R.drawable.intro5
+    };
+
+    @Override public int getCount() {
+      return sDrawables.length;
     }
 
-    class SamplePagerAdapter extends PagerAdapter {
+    @Override public View instantiateItem(ViewGroup container, int position) {
+      PhotoView photoView = new PhotoView(container.getContext());
+      photoView.setImageResource(sDrawables[position]);
 
-        private  final int[] sDrawables = { R.drawable.intro1, R.drawable.intro2,
-                R.drawable.intro3, R.drawable.intro4, R.drawable.intro5};
+      // Now just add PhotoView to ViewPager and return it
+      container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT,
+          ViewGroup.LayoutParams.MATCH_PARENT);
+      if (position == sDrawables.length - 1) {
+        HANDLER.postDelayed(new Runnable() {
+          Intent introInten = new Intent(IntroActivity.this, AddContactActivity.class);
 
-        @Override
-        public int getCount() {
-            return sDrawables.length;
-        }
-
-        @Override
-        public View instantiateItem(ViewGroup container, int position) {
-            PhotoView photoView = new PhotoView(container.getContext());
-            photoView.setImageResource(sDrawables[position]);
-
-            // Now just add PhotoView to ViewPager and return it
-            container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            if(position == sDrawables.length - 1){
-                HANDLER.postDelayed(new Runnable() {
-                    Intent introInten = new Intent(IntroActivity.this,
-                            AddContactActivity.class);
-                    @Override
-                    public void run() {
-                        startActivity(introInten);
-                    }
-                }, 1000);
-            }
-            return photoView;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
+          @Override public void run() {
+            startActivity(introInten);
+          }
+        }, 1000);
+      }
+      return photoView;
     }
+
+    @Override public void destroyItem(ViewGroup container, int position, Object object) {
+      container.removeView((View) object);
+    }
+
+    @Override public boolean isViewFromObject(View view, Object object) {
+      return view == object;
+    }
+  }
 
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,13 +96,13 @@ public class IntroActivity extends Activity {
         return super.onPrepareOptionsMenu(menu);
     }*/
 
-    private void toggleViewPagerScrolling() {
-        if (isViewPagerActive()) {
-            ((HackyViewPager) mViewPager).toggleLock();
-        }
+  private void toggleViewPagerScrolling() {
+    if (isViewPagerActive()) {
+      ((HackyViewPager) mViewPager).toggleLock();
     }
+  }
 
-    private void toggleLockBtnTitle() {
+  private void toggleLockBtnTitle() {
         /*boolean isLocked = false;
         if (isViewPagerActive()) {
             isLocked = ((HackyViewPager) mViewPager).isLocked();
@@ -120,18 +111,16 @@ public class IntroActivity extends Activity {
         if (menuLockItem != null) {
             menuLockItem.setTitle(title);
         }*/
-    }
+  }
 
-    private boolean isViewPagerActive() {
-        return (mViewPager != null && mViewPager instanceof HackyViewPager);
-    }
+  private boolean isViewPagerActive() {
+    return (mViewPager != null && mViewPager instanceof HackyViewPager);
+  }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        if (isViewPagerActive()) {
-            outState.putBoolean(ISLOCKED_ARG, ((HackyViewPager) mViewPager).isLocked());
-        }
-        super.onSaveInstanceState(outState);
+  @Override protected void onSaveInstanceState(@NonNull Bundle outState) {
+    if (isViewPagerActive()) {
+      outState.putBoolean(ISLOCKED_ARG, ((HackyViewPager) mViewPager).isLocked());
     }
-
+    super.onSaveInstanceState(outState);
+  }
 }
