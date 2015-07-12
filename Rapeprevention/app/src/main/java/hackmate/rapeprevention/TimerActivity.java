@@ -27,6 +27,8 @@ public class TimerActivity extends ActionBarActivity {
         controller.setTime(obj);
       }
     });
+    getSupportActionBar().setElevation(0);
+    getSupportActionBar().setTitle("FRIENDMATE");
   }
 
   @Override protected void onStop() {

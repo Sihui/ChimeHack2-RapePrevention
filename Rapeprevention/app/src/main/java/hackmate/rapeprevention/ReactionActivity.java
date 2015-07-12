@@ -1,8 +1,8 @@
 package hackmate.rapeprevention;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.ReactionController;
 
-public class ReactionActivity extends Activity {
+public class ReactionActivity extends ActionBarActivity{
   @Bind(R.id.reaction_btn) ImageView reactionBtn;
   @Bind(R.id.title) TextView title;
   public Handler handler = new Handler();
@@ -24,7 +24,8 @@ public class ReactionActivity extends Activity {
     controller = ReactionController.ONLY;
     controller.takeActivity(this);
     controller.onReceiveIntent(getIntent());
-    super.onCreate(savedInstanceState);
+    getSupportActionBar().setElevation(0);
+    getSupportActionBar().setTitle("FRIENDMATE");
   }
 
   @Override protected void onStop() {
@@ -42,11 +43,11 @@ public class ReactionActivity extends Activity {
   }
 
   public void showAlertBtn() {
-    reactionBtn.setImageDrawable(getResources().getDrawable(R.drawable.circle_red));
+    reactionBtn.setImageDrawable(getResources().getDrawable(R.drawable.reaction2));
   }
 
   public void showNormalBtn() {
-    reactionBtn.setImageDrawable(getResources().getDrawable(R.drawable.circle_green));
+    reactionBtn.setImageDrawable(getResources().getDrawable(R.drawable.reaction));
   }
 
   public void setTitle(String title) {
