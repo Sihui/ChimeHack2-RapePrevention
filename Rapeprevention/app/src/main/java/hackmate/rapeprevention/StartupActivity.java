@@ -18,13 +18,21 @@ import android.widget.Button;
 
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hackmate.rapeprevention.Controller.StartupController;
+import hackmate.rapeprevention.Models.BackendRequest;
 import hackmate.rapeprevention.Models.DrunkAction;
 import hackmate.rapeprevention.Models.GPSTracker;
+import hackmate.rapeprevention.Models.Links;
 import hackmate.rapeprevention.Models.SMS;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class StartupActivity extends ActionBarActivity {
   @Bind(R.id.go_to_reaction) Button btn;
@@ -58,7 +66,19 @@ public class StartupActivity extends ActionBarActivity {
   }
 
   @OnClick(R.id.go_to_reaction) void onGotoBtnClick() {
-      DrunkAction.drunkAction();
+      Callback<Links> cb = new Callback<Links>() {
+          @Override
+          public void success(Links links, Response response) {
+              System.out.println("s " + links.chatLink);
+          }
+
+          @Override
+          public void failure(RetrofitError error) {
+              System.out.println("f " + error);
+          }
+      };
+      BackendRequest.getLinks(cb);
+      //DrunkAction.drunkAction();
     //startActivity(new Intent(this, ReactionActivity.class));
   }
 
