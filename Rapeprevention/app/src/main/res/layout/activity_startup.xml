@@ -6,31 +6,42 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".StartupActivity">
+    tools:context=".StartupActivity"
+    >
 
-    <Button
-        android:id="@+id/go_to_reaction"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Go To Test Reaction"
-        />
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="100dp"
+      android:layout_centerHorizontal="true"
+      android:text="Name"
+      android:textSize="20sp"
+      android:textColor="@color/white"
+      />
 
-    <Button
-        android:id="@+id/go_to_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:text="Go To add contact"
-        android:layout_below="@+id/go_to_reaction"
-        android:layout_alignEnd="@+id/go_to_reaction" />
+  <EditText
+      android:layout_alignTop="@id/title"
+      android:layout_marginTop="40dp"
+      android:layout_centerHorizontal="true"
+      android:id="@+id/enter_user_name"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:singleLine="true"
+      android:imeOptions="actionDone"
+      android:hint="first name, last name"
+      android:background="@drawable/text_edit_bg"
+      android:gravity="center"
+      android:textColorHint="#2EAFBD"
+      />
 
-    <EditText
-        android:id="@+id/enter_user_name"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_centerInParent="true"
-        android:hint="What's your name?"
-        android:singleLine="true"
-        android:imeOptions="actionDone"
-        />
-
+  <Button
+      android:id="@+id/next"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="48dp"
+      android:text="NEXT"
+      style="@style/ButtonTheme"
+      />
 </RelativeLayout>

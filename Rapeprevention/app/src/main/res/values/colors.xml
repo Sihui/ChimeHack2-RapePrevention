@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="startColor">#00BCD4</color>
+  <color name="endColor">#006064</color>
+  <color name="widgetBackground">#80ffffff</color>
+  <color name="buttonBackground">#40ffffff</color>
+  <color name="buttonBackgroundPressed">#20ffffff</color>
+  <color name="white">#FFFFFF</color>
+</resources>
